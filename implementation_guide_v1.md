@@ -66,7 +66,7 @@ for param in model.decoder.parameters():
 
 Based on successful implementations[4][6]:
 - **Learning rate**: 1e-4 with AdamW optimizer
-- **Batch size**: 8 (adjust based on GPU memory)
+- **Batch size**: 16 (adjust based on GPU memory)
 - **Image size**: 640 x 640 x 3
 - **Loss function**: Binary cross-entropy for mask prediction
 - **Augmentations**: Random scaling, cropping, color jittering

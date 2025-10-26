@@ -20,5 +20,7 @@ Drywall-Join-Detect.v1i.voc/*
 # Jupyter Notebook
 .ipynb_checkpoints/
 *.ipynb
+notebooks/*
 
-
+# model checkpoints
+checkpoints/*
