@@ -6,6 +6,7 @@ import torch.nn.functional as F
 from tqdm import tqdm
 from sklearn.metrics import jaccard_score
 from process import process_predicted_mask
+from train import collate_fn
 
 
 def calculate_iou(pred_mask, true_mask, threshold=0.5):
@@ -237,7 +238,7 @@ def evaluate_model_with_metrics(model, val_loader, val_labels, device, num_sampl
 
 
 # Visualize Sample Predictions with Metrics
-def visualize_predictions_with_metrics(model, val_dataset, val_labels, device, num_samples=6):
+def visualize_predictions_with_metrics(model, processor, val_dataset, val_labels, device, num_samples=6):
     """
     Visualize model predictions along with calculated metrics.
     """
@@ -264,7 +265,7 @@ def visualize_predictions_with_metrics(model, val_dataset, val_labels, device, n
             label_type = val_labels[sample_idx]
             
             # Process through model
-            debug_batch = collate_fn([sample])
+            debug_batch = collate_fn([sample], processor)
             outputs = model(
                 input_ids=debug_batch['input_ids'].to(device),
                 attention_mask=debug_batch['attention_mask'].to(device),
